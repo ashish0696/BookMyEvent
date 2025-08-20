@@ -1,0 +1,9 @@
+<div class="confirm-dialog">
+  <h3><mat-icon>help_outline</mat-icon> Confirm Booking</h3>
+  <p>You're about to book the following seats:</p>
+  <p class="seats">{{ data.seatsList }}</p>
+  <div class="actions">
+    <button class="confirm-button" mat-raised-button color="primary" (click)="confirm()">OK</button>
+    <button class="cancel-button" mat-button (click)="cancel()">Cancel</button>
+  </div>
+</div>

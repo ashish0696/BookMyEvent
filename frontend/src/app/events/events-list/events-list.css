@@ -23,7 +23,7 @@
     height: calc(100vh - 250px);
     display: block;
     padding: 16px;
-    
+
 
 }
 
@@ -54,19 +54,21 @@
 }
 
 .mt-icon {
-  font-size: 18px;
-  color: #0a0a0a; /* matches your gradient theme */
-  vertical-align: middle;
-  margin-right: 2px;
+    font-size: 18px;
+    color: #0a0a0a;
+    /* matches your gradient theme */
+    vertical-align: middle;
+    margin-right: 2px;
     padding-top: 3px;
 
 }
 
 .mt-iconBook {
-  font-size: 18px;
-  color: #fcfcfc; /* matches your gradient theme */
-  vertical-align: middle;
-  margin-right: 2px;
+    font-size: 18px;
+    color: #fcfcfc;
+    /* matches your gradient theme */
+    vertical-align: middle;
+    margin-right: 2px;
     padding-top: 3px;
 
 }
@@ -135,11 +137,40 @@
 
 /* Responsive breakpoints */
 @media (max-width: 575.98px) {
-    .event-search { width: 90vw; }
-    .grid { gap: 14px }
-    .card { padding: 10px; min-height: 120px }
+    .event-search {
+        /* width: 90vw; */
+    }
+
+    .grid {
+        gap: 14px
+    }
+
+    .card {
+        padding: 10px;
+        min-height: 120px
+    }
 }
-@media (min-width: 576px) and (max-width: 767.98px) { .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
-@media (min-width: 768px) and (max-width: 991.98px) { .grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); } }
-@media (min-width: 992px) and (max-width: 1199.98px) { .grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); } }
-@media (min-width: 1200px) { .grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); } }
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}

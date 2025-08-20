@@ -5,7 +5,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -27,7 +27,10 @@ export class LoginComponent {
     ]]
   });
   loading=false; error='';
-  constructor(private fb:FormBuilder, private auth:AuthService, private router:Router, private toast:ToastService){}
+  private returnUrl: string | null = null;
+  constructor(private fb:FormBuilder, private auth:AuthService, private router:Router, private toast:ToastService, private route:ActivatedRoute){
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+  }
   submit(){
     if(this.form.invalid) return;
     this.loading=true; this.error='';
@@ -39,7 +42,8 @@ export class LoginComponent {
           this.loading = false;
         } else {
           this.toast.success('Logged in successfully');
-          this.router.navigate(['/events'], { replaceUrl: true });    
+          const dest = this.returnUrl || '/events';
+          this.router.navigateByUrl(dest, { replaceUrl: true });
             }
       },
       error: err => {

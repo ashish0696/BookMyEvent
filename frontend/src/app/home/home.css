@@ -3,7 +3,10 @@
     .home-wrap { padding: 8px }
     .hero-card { padding-top: 80px; border-radius: 12px }
     h1 { font-size: 28px }
-    p { font-size: 14px }
+    p { font-size: 14px ;
+    padding-left: 10px;
+padding-right: 10px;
+}
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
     .hero-card { padding-top: 100px }

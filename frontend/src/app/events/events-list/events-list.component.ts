@@ -51,6 +51,16 @@ export class EventsListComponent implements OnInit {
       );
     }
   }
-  select(e:EventItem, ev:Event){ ev.stopPropagation(); this.router.navigate(['/events', e.id]); }
+  select(e:EventItem, ev:Event){
+    ev.stopPropagation();
+    const token = sessionStorage.getItem('jwt');
+    if(!token){
+      // require login before booking
+      this.router.navigate(['/login'], { queryParams: { returnUrl: `/events/${e.id}` } });
+      return;
+    }
+    // already authenticated: navigate to event detail where booking UI exists
+    this.router.navigate(['/events', e.id]);
+  }
   open(e:EventItem){ this.router.navigate(['/events', e.id]); }
 }

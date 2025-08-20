@@ -6,11 +6,12 @@ import { EventDetailComponent } from './events/event-details/event-detail.compon
 import { authGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 
+
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'signup', component: SignupComponent },
-	{ path: 'events', component: EventsListComponent, canActivate:[authGuard] },
+	{ path: 'events', component: EventsListComponent },
 	{ path: 'events/:id', component: EventDetailComponent, canActivate:[authGuard] },
 	{ path: '**', redirectTo: '' }
 ];

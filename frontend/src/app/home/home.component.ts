@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MatIconModule } from '@angular/material/icon';
+import { NavbarComponent } from "../shared/navbar/navbar.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule],
+  imports: [CommonModule, RouterModule, MatIconModule, NavbarComponent],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

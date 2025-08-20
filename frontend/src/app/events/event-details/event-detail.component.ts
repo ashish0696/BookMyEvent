@@ -7,13 +7,17 @@ import { ToastService } from '../../shared/toast/toast.service';
 import { EventsService, EventItem } from '../events.service';
 import { firstValueFrom } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { EventBookConfirmDialog } from './event-book-confirm/event-book-confirm.dialog';
 
 
 
 @Component({
   selector: 'app-event-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, DatePipe, ReactiveFormsModule, MatIconModule],
+  imports: [CommonModule, RouterModule, DatePipe, ReactiveFormsModule, MatIconModule, MatDialogModule, MatButtonModule],
   templateUrl: './event-detail.html',
   styleUrl: './event-detail.css'
 })
@@ -21,7 +25,7 @@ export class EventDetailComponent implements OnInit {
   event?:EventItem; loading=true; booking=false;
   selected = new Set<string>(); // stores keys like "r,c" for selected seats
   editForm = this.fb.group({ title:['', Validators.required], location:['', Validators.required], startDateTime:['', Validators.required] });
-  constructor(private route:ActivatedRoute, private events:EventsService, private router:Router, private fb:FormBuilder, private toast:ToastService){}
+  constructor(private route:ActivatedRoute, private events:EventsService, private router:Router, private fb:FormBuilder, private toast:ToastService, private dialog: MatDialog){}
   ngOnInit(){
     const id=Number(this.route.snapshot.paramMap.get('id'));
     this.events.detail(id).subscribe({
@@ -60,8 +64,18 @@ export class EventDetailComponent implements OnInit {
     const seatsList = Array.from(this.selected).map(k=>{
       const [r,c] = k.split(',').map(Number); return `${this.rowLabel(r)}${c+1}`;
     }).join(', ');
-    const confirmMsg = `Do you want to book these selected seats: ${seatsList}? Once you book, they cannot be changed.`;
-    if(!confirm(confirmMsg)) return;
+
+    // Open confirmation dialog instead of window.confirm
+    const ref = this.dialog.open(EventBookConfirmDialog, { data: { seatsList, eventTitle: this.event.title } });
+    const result = await ref.afterClosed().toPromise();
+    if (!result) return; // false or cancelled
+    if (result === 'back') {
+      // navigate back to booking page (assuming back() goes to events list or seat booking overview)
+      this.back();
+      return;
+    }
+
+    // result === true -> proceed with booking
     this.booking = true;
     let bookingFailed = false;
     try{

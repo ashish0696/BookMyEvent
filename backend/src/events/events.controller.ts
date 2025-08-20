@@ -8,7 +8,6 @@ import { UpdateEventDto } from './dto/update-event.dto';
 
 @ApiTags('events')
 @ApiBearerAuth('bearer')
-@UseGuards(AuthGuard('jwt'))
 @Controller('events')
 export class EventsController {
   constructor(private events: EventsService) {}
@@ -19,16 +18,19 @@ export class EventsController {
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard('jwt'))
   detail(@Param('id', ParseIntPipe) id: number) {
     return this.events.findOne(id);
   }
 
   @Post(':id/book')
+  @UseGuards(AuthGuard('jwt'))
   book(@Param('id', ParseIntPipe) id: number, @Body() dto: BookEventDto, @Req() req: any) {
     return this.events.book(id, req.user.userId, dto.seatRow, dto.seatCol);
   }
 
   @Post()
+  @UseGuards(AuthGuard('jwt'))
   create(@Body() dto: CreateEventDto) {
     return this.events.create({
       title: dto.title,
@@ -40,6 +42,7 @@ export class EventsController {
   }
 
   @Patch(':id')
+  @UseGuards(AuthGuard('jwt'))
   update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateEventDto) {
     const patch: any = { ...dto };
     if (dto.startDateTime) patch.startDateTime = new Date(dto.startDateTime);
@@ -47,6 +50,7 @@ export class EventsController {
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.events.remove(id);
   }
