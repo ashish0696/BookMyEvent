@@ -1,10 +1,18 @@
 ### Project Basic UI Design
-
-![alt text](EventBookingPage.drawio.png) 
-![alt text](EventListingPage.drawio.png) 
-![alt text](SignUpPage.drawio.png) 
-![alt text](LoginPage.drawio.png) 
+Homepage:
 ![alt text](HomePage.png)
+
+Login Page:
+![alt text](LoginPage.drawio.png) 
+
+SignUp Page:
+![alt text](SignUpPage.drawio.png) 
+
+Event List Page:
+![alt text](EventListingPage.drawio.png) 
+
+Event Booking Page:
+![alt text](EventBookingPage.drawio.png) 
 
 ___________________________________________________________________
 
