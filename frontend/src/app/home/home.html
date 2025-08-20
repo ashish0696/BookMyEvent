@@ -1,0 +1,17 @@
+<div class="home-wrap">
+  <div class="hero-card">
+    <h1><mat-icon>spa</mat-icon> Welcome to BookMyEvent <mat-icon>spa</mat-icon></h1>
+    <br>
+    <p>Discover and book seats for exciting events with ease<mat-icon class="mt-icon"> bubble_chart</mat-icon></p>
+    <div class="actions" *ngIf="(isAuthed$ | async); else guestLinks">
+      <a routerLink="/events" class="btn primary"><mat-icon class="mt-icon">airplay</mat-icon>Explore Events</a>
+    </div>
+    <ng-template #guestLinks>
+      <div class="actions">
+        <a routerLink="/events" class="btn primary"><mat-icon class="mt-icon">airplay</mat-icon>Explore Events</a>
+        <a routerLink="/login" class="btn"><mat-icon class="mt-iconAuth">how_to_reg</mat-icon>Login </a>
+        <a routerLink="/signup" class="btn"><mat-icon class="mt-iconAuth">person_add</mat-icon>Create Account</a>
+      </div>
+    </ng-template>
+  </div>
+</div>

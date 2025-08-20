@@ -1,0 +1,18 @@
+<div class="events-wrap">
+  <input type="text" class="event-search" placeholder="Search events..." [(ngModel)]="searchTerm" (input)="filterEvents()" />
+  
+  <div *ngIf="loading" class="loadingEvents">
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+  </div>
+  <div class="grid" *ngIf="!loading">
+  <div class="card" *ngFor="let e of filteredEvents" (click)="open(e)">
+    <mat-icon>airplay</mat-icon><h3>{{e.title}}</h3>
+
+  <p><mat-icon class="mt-icon">location_on</mat-icon>{{e.location}}</p>
+    <br>
+    <p><mat-icon class="mt-icon">schedule</mat-icon>{{e.startDateTime | date:'short'}}</p>
+
+    <button class="book-btn" (click)="select(e, $event)"><mat-icon class="mt-iconBook">turned_in</mat-icon>Book Now</button>
+  </div>
+  </div>
+</div>

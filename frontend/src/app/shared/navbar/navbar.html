@@ -1,0 +1,16 @@
+<nav class="nav">
+  <a class="brand" routerLink="" routerLinkActive="active">
+    <img src="/assets/event_booking_logo.png" alt="Logo" class="nav-logo" />
+    BooMyEvent
+  </a>
+  <span class="spacer"></span>
+  <ng-container *ngIf="!isAuthed(); else authedLinks">
+    <a routerLink="/login" routerLinkActive="active"><mat-icon class="mt-iconAuth">how_to_reg</mat-icon>Login</a>
+    <a routerLink="/signup" routerLinkActive="active"><mat-icon class="mt-iconAuth">person_add</mat-icon>Signup</a>
+  </ng-container>
+  <ng-template #authedLinks>
+    <button   (click)="logout()"><mat-icon class="mt-icon">power_settings_new</mat-icon>
+Logout</button>
+  </ng-template>
+  
+</nav>

@@ -1,0 +1,5 @@
+/* Responsive root spacing */
+@media (max-width: 575.98px) {
+	:host { display: block; padding: 6px }
+}
+@media (min-width: 576px) { :host { padding: 12px } }

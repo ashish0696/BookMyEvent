@@ -1,0 +1,105 @@
+/* Responsive breakpoints */
+@media (max-width: 575.98px) {
+    .home-wrap { padding: 8px }
+    .hero-card { padding-top: 80px; border-radius: 12px }
+    h1 { font-size: 28px }
+    p { font-size: 14px }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .hero-card { padding-top: 100px }
+    h1 { font-size: 34px }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .hero-card { max-width: 640px }
+}
+@media (min-width: 992px) { .hero-card { max-width: 720px } }
+.home-wrap {
+height:calc(100vh - 200px);
+    display: grid;
+    place-items: center;
+    /* padding:24px; */
+    background-size: cover;
+    /* cover entire area */
+    background-position: center;
+    /* center the image */
+    background-repeat: no-repeat;
+    /* no tiling */
+    padding: 16px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.hero-card {
+    max-width: 920px;
+    width: 100%;
+    max-height: 300px;
+    height: 100%;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 15px 16px 40px rgba(8, 8, 8, 0.114);
+    background: linear-gradient(135deg,#fd2a6d,#760465);
+
+    padding-top: 130px
+}
+
+h1 {
+    margin: 0 0 12px;
+    color: #face06;
+    font-size: 52px;
+    
+}
+
+p {
+    color: #e6e7e9;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #374151;
+    background: #fff;
+    margin-top: 50px;
+    
+}
+
+.btn:hover {
+    background: rgb(237, 237, 237);
+}
+
+.btn.primary {
+    background: #fb80a7;
+    border-color: #760465;
+    color: #fff
+}
+
+.mt-icon {
+  font-size: 18px;
+  color: #f9f8f8; /* matches your gradient theme */
+  vertical-align: middle;
+  margin-right: 4px;
+  padding-top: 3px;
+}
+
+.mt-iconAuth {
+  font-size: 18px;
+  color: #070707; /* matches your gradient theme */
+  vertical-align: middle;
+  margin-right: 4px;
+  padding-top: 3px;
+}
+
+.btn.primary:hover {
+    background: #760465;
+    border-color: #D1235B
+}

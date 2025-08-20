@@ -1,0 +1,44 @@
+<div class="auth-wrap">
+  <div class="card">
+    <h2><mat-icon class="mt-iconSignup">card_membership</mat-icon> Sign Up</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <label>Email</label>
+      <input formControlName="email" type="email" placeholder="you@example.com">
+      <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" style="color:red; font-size:0.9em;">
+        <span *ngIf="form.get('email')?.errors?.['required']">Email is required.</span>
+        <span *ngIf="form.get('email')?.errors?.['email']">Invalid email format.</span>
+      </div>
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="••••••••">
+      <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" style="color:red; font-size:0.9em;">
+        <span *ngIf="form.get('password')?.errors?.['required']">Password is required.</span>
+        <span *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least 8 characters.</span>
+        <span *ngIf="form.get('password')?.errors?.['pattern']">Password must contain uppercase, lowercase, number, and symbol.</span>
+      </div>
+       <label>Confirm Password</label>
+       <input type="password" formControlName="confirmPassword" placeholder="••••••••">
+       <div *ngIf="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.invalid" style="color:red; font-size:0.9em;">
+         <span *ngIf="form.get('confirmPassword')?.errors?.['required']">Confirm password is required.</span>
+         <span *ngIf="form.get('confirmPassword')?.errors?.['minlength']">Confirm password must be at least 8 characters.</span>
+         <span *ngIf="form.get('confirmPassword')?.errors?.['pattern']">Confirm password must contain uppercase, lowercase, number, and symbol.</span>
+       </div>
+       <div *ngIf="form.errors?.['passwordMismatch'] && (form.get('confirmPassword')?.touched || form.get('password')?.touched)" style="color:red; font-size:0.9em;">
+         password should match
+       </div>
+      <label>Contact</label>
+      <input formControlName="contact" placeholder="+91 9876543210">
+      <div *ngIf="form.get('contact')?.touched && form.get('contact')?.invalid && ((form.get('contact')?.value?.length || 0) < 10)" style="color:red; font-size:0.9em;">
+        <span *ngIf="form.get('contact')?.errors?.['required']">Contact is required.</span>
+        <span *ngIf="form.get('contact')?.errors?.['pattern']">Contact must be 10 digits, +91 is optional.</span>
+      </div>
+      <label>Address</label>
+      <input formControlName="address" placeholder="123 Main St">
+      <div *ngIf="form.get('address')?.touched && form.get('address')?.invalid" style="color:red; font-size:0.9em;">
+        <span *ngIf="form.get('address')?.errors?.['required']">Address is required.</span>
+        <span *ngIf="form.get('address')?.errors?.['minlength']">Address must be at least 10 characters.</span>
+      </div>
+  <button class="primary" [disabled]="form.invalid || loading"><mat-icon class="mt-iconAuth">person_add</mat-icon>Create Account</button>
+    </form>
+    <a class="muted" routerLink="/login"><mat-icon class="mt-iconAuth">how_to_reg</mat-icon>Back to login</a>
+  </div>
+</div>

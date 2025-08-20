@@ -1,0 +1,11 @@
+@import 'primeicons/primeicons.css';
+
+.pi {
+    font-family: 'PrimeIcons' !important;
+}
+
+.my-snackbar
+{
+    float: right;
+
+}

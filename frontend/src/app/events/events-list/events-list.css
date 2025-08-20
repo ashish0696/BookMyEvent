@@ -1,0 +1,145 @@
+/* Centered search bar styling */
+.event-search {
+    display: block;
+    margin: 0 auto 24px auto;
+    padding: 12px 22px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.12);
+    font-size: 1.15rem;
+    width: 340px;
+    max-width: 90vw;
+    background: #fff;
+    outline: none;
+    transition: box-shadow 0.18s, border-color 0.18s;
+}
+
+.event-search:focus {
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.18);
+    border-color: #3b82f6;
+}
+
+.events-wrap {
+    height: calc(100vh - 250px);
+    display: block;
+    padding: 16px;
+    
+
+}
+
+.grid {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 10px
+}
+
+.card {
+
+    border: 2px solid #760465;
+    padding: 14px;
+    min-height: 150px;
+    /* increased ~150% */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* center horizontally */
+    text-align: center;
+    /* center text */
+    border-radius: 12px;
+    cursor: pointer;
+    background: rgb(227, 227, 227);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.mt-icon {
+  font-size: 18px;
+  color: #0a0a0a; /* matches your gradient theme */
+  vertical-align: middle;
+  margin-right: 2px;
+    padding-top: 3px;
+
+}
+
+.mt-iconBook {
+  font-size: 18px;
+  color: #fcfcfc; /* matches your gradient theme */
+  vertical-align: middle;
+  margin-right: 2px;
+    padding-top: 3px;
+
+}
+
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 10px 12px 26px rgba(0, 0, 0, .08);
+}
+
+.card h3 {
+    margin: 0 0 6px;
+    color: #090909;
+    font-size: 18px;
+}
+
+.card p {
+    margin: 0 0 4px;
+    color: #040404
+}
+
+.book-btn {
+    margin-top: auto;
+    /* push to bottom */
+    align-self: center;
+    /* center horizontally */
+    background: #D1235B;
+    /* green */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s ease;
+}
+
+.book-btn:hover {
+    background: #760465;
+}
+
+/* dark green */
+
+.loadingEvents {
+    color: rgb(54, 37, 13);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.EventsTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #5e82b4;
+    margin-bottom: 16px;
+    text-align: center;
+    /* center the title */
+    border: 1px solid #e5e7eb;
+    background-color: #A41460;
+    width: 50%;
+    /* align it center of the page */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 575.98px) {
+    .event-search { width: 90vw; }
+    .grid { gap: 14px }
+    .card { padding: 10px; min-height: 120px }
+}
+@media (min-width: 576px) and (max-width: 767.98px) { .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
+@media (min-width: 768px) and (max-width: 991.98px) { .grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); } }
+@media (min-width: 992px) and (max-width: 1199.98px) { .grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); } }
+@media (min-width: 1200px) { .grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); } }

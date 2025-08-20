@@ -1,0 +1,113 @@
+.nav {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 12px 36px;
+
+	position: sticky;
+	top: 0;
+	z-index: 10;
+
+	border-radius: 8px 8px 0 0;
+
+	/* background split: one for inside, one for border */
+	background:
+		linear-gradient(rgb(237, 237, 237), rgb(237, 237, 237)) padding-box,
+		linear-gradient(135deg, #D1235B, #760465) border-box;
+
+	border: 1px solid transparent;
+	/* transparent so gradient shows */
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.brand {
+	font-weight: 700;
+	font-size: 25px;
+	letter-spacing: .2px;
+	color: #1f2937;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+.nav-logo {
+	height: 32px;
+	width: 32px;
+	object-fit: contain;
+	margin-right: 10px;
+	margin-left: 6px;
+	vertical-align: middle;
+}
+
+.spacer {
+	flex: 1;
+
+	padding-left: 120px;
+}
+
+.nav a {
+	text-decoration: none;
+	color: #090909;
+	padding: 8px 16px;
+	border-radius: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
+	transition: background .2s ease, color .2s ease;
+}
+
+.nav a:hover {
+	background: #b9365f;
+	color: #f0f1f5;
+}
+
+.nav a.active {
+	color: #1da3d8;
+	font-weight: 600;
+}
+
+.nav button {
+	margin-left: 12px;
+	margin-right: 12px;
+	padding: 8px 18px;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	background: #fff;
+	color: #374151;
+	cursor: pointer;
+	transition: background .2s ease, border-color .2s ease;
+}
+
+.nav button:hover {
+	background: #f3f4f6;
+	border-color: #9ca3af
+}
+
+/* Responsive breakpoints */
+@media (max-width: 575.98px) {
+	.nav { padding: 8px 12px; gap: 8px; }
+	.nav-logo { height: 28px; width: 28px; }
+	.spacer { padding-left: 16px; }
+	.nav a, .nav button { padding: 6px 8px; font-size: 14px; }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.nav { padding: 10px 18px; }
+}
+@media (min-width: 768px) { .nav { padding: 12px 36px; } }
+
+.mt-icon {
+  font-size: 18px;
+  color: #0a0a0a; /* matches your gradient theme */
+  vertical-align: middle;
+  margin-right: 2px;
+    padding-top: 3px;
+
+}
+.mt-iconAuth {
+  font-size: 18px;
+  color: #070707; /* matches your gradient theme */
+  vertical-align: middle;
+  margin-right: 4px;
+  padding-top: 3px;
+}
