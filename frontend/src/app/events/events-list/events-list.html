@@ -6,13 +6,13 @@
   </div>
   <div class="grid" *ngIf="!loading">
   <div class="card" *ngFor="let e of filteredEvents" (click)="open(e)">
-    <mat-icon>airplay</mat-icon><h3>{{e.title}}</h3>
-
-  <p><mat-icon class="mt-icon">location_on</mat-icon>{{e.location}}</p>
-    <br>
-    <p><mat-icon class="mt-icon">schedule</mat-icon>{{e.startDateTime | date:'short'}}</p>
-
-    <button class="book-btn" (click)="select(e, $event)"><mat-icon class="mt-iconBook">turned_in</mat-icon>Book Now</button>
+    <div class="card-media" [ngStyle]="{'background-image': e.imageUrl ? 'url('+e.imageUrl+')' : ''}"></div>
+    <div class="card-info">
+      <mat-icon>airplay</mat-icon><h3>{{e.title}}</h3>
+      <p><mat-icon class="mt-icon">location_on</mat-icon>{{e.location}}</p>
+      <p><mat-icon class="mt-icon">schedule</mat-icon>{{e.startDateTime | date:'short'}}</p>
+  <button class="book-btn" (click)="viewDetails(e, $event)"><mat-icon class="mt-iconBook">turned_in</mat-icon>Book Now</button>
+    </div>
   </div>
   </div>
 </div>

@@ -1,31 +1,22 @@
+<div *ngIf="!event && loading">Loading...</div>
 <div class="event-detail-wrap">
-  <div *ngIf="!event && loading">Loading...</div>
-  <div *ngIf="event as ev" class="event-detail-card">
-   <h2><mat-icon>flare</mat-icon> {{ev.title}}<mat-icon>flare</mat-icon></h2>
-    <p><mat-icon class="mt-icon">location_on</mat-icon>{{ev.location}}, <mat-icon class="mt-icon">event</mat-icon>{{ev.startDateTime | date:'fullDate'}}.<mat-icon class="mt-icon">access_time</mat-icon>{{ev.startDateTime | date:'shortTime'}}</p>
-    <div class="event-stage">
-    Event Stage
-    </div>
+	<div *ngIf="!event && loading" class="loading">Loading...</div>
+	<div class="event-hero" *ngIf="event as ev">
+	<div class="hero-media" [ngStyle]="{'background-image': ev.imageUrl ? 'url('+ev.imageUrl+')' : ''}"></div>
+	<div class="hero-overlay">
+		<div class="hero-content">
+			<h2><mat-icon>flare</mat-icon> {{ev.title}} <mat-icon>flare</mat-icon></h2>
+			<p>
+				<mat-icon class="mt-icon">location_on</mat-icon>{{ev.location}},
+				<mat-icon class="mt-icon">event</mat-icon>{{ev.startDateTime | date:'fullDate'}}.
+				<mat-icon class="mt-icon">access_time</mat-icon>{{ev.startDateTime | date:'shortTime'}}
+			</p>
 
-    <div class="seat-grid">
-    <div *ngFor="let row of ev.seatMap; let r = index" class="seat-row">
-     <span class="row-indicator">{{ rowLabel(r) }} ➤</span>
-      <ng-container *ngFor="let seat of row; let c = index">
-        <button class="seat" [disabled]="seat === 'X'" [class.booked]="seat==='X'" [class.selected]="isSelected(r,c)" (click)="toggleSeat(r,c)">{{c+1}}</button>
-        </ng-container>
-    </div>
-    </div>
-    <span *ngIf="selected.size" class="selected-info"><mat-icon class="mt-icon">book</mat-icon>Selected: {{ selectedList }}</span>
-
-  <div class="actions">
-    <button class="book-btn" (click)="bookSelected()" [disabled]="booking || !selected.size"><mat-icon class="mt-iconBook">turned_in</mat-icon>Book Selected</button>
-    <button class="cancel-btn" (click)="cancelSelection()" [disabled]="!selected.size"><mat-icon class="mt-iconBook">reply</mat-icon>Clear Selection</button>
-    <button class="back-btn" (click)="back()"><mat-icon class="mt-icon">replay</mat-icon>Back</button>
-
-  </div>
-    
-  
-
-  
+				<div class="hero-actions">
+					<button mat-button class="book-btn" (click)="goToBooking()"><mat-icon>turned_in</mat-icon> Book</button>
+					<button mat-button class="back-btn" (click)="back()"><mat-icon>replay</mat-icon> Back</button>
+				</div>
+		</div>
+	</div>
 </div>
 </div>

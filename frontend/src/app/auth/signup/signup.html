@@ -22,7 +22,7 @@
          <span *ngIf="form.get('confirmPassword')?.errors?.['minlength']">Confirm password must be at least 8 characters.</span>
          <span *ngIf="form.get('confirmPassword')?.errors?.['pattern']">Confirm password must contain uppercase, lowercase, number, and symbol.</span>
        </div>
-       <div *ngIf="form.errors?.['passwordMismatch'] && (form.get('confirmPassword')?.touched || form.get('password')?.touched)" style="color:red; font-size:0.9em;">
+       <div *ngIf="form.errors?.['passwordMismatch'] && form.get('confirmPassword')?.touched" style="color:red; font-size:0.9em;">
          password should match
        </div>
       <label>Contact</label>

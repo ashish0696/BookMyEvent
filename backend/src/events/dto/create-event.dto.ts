@@ -1,4 +1,4 @@
-import { IsString, IsInt, Min, IsDateString } from 'class-validator';
+import { IsString, IsInt, Min, IsDateString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateEventDto {
@@ -23,4 +23,9 @@ export class CreateEventDto {
   @IsInt()
   @Min(1)
   cols!: number;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  imageUrl?: string;
 }

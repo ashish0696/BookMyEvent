@@ -2,10 +2,10 @@
     padding: 16px;
     max-width: 420px;
     background:
-		linear-gradient(rgb(237, 237, 237), rgb(237, 237, 237)) padding-box,
-		linear-gradient(135deg, #D1235B, #760465) border-box;
+        linear-gradient(rgb(237, 237, 237), rgb(237, 237, 237)) padding-box,
+        linear-gradient(135deg, #D1235B, #760465) border-box;
 
-	 border: 2px solid transparent;
+     border: 2px solid transparent;
      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -32,9 +32,14 @@
     color: white;
 }
 
-.cancel-button {
+.back-button {
     background: transparent;
     color: #D1235B;
+}
+
+.cancel-button {
+    background: transparent;
+    color: #6b7280;
 }
 
 .confirm-button:hover {

@@ -18,6 +18,9 @@ export class Event {
   @Column({ type: 'simple-json' })
   seatMap!: string[][]; 
 
+  @Column({ nullable: true })
+  imageUrl?: string;
+
   @OneToMany(() => Booking, (b) => b.event)
   bookings!: Booking[];
 }

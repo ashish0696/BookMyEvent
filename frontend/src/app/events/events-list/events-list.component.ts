@@ -24,7 +24,6 @@ export class EventsListComponent implements OnInit {
     this.eventsSvc.list().subscribe({
       next: res => {
         if (res.error) {
-          // Error can be shown in the template or handled otherwise
           setTimeout(() => { this.loading = false; }, 1000);
         } else {
           this.events = res;
@@ -33,7 +32,6 @@ export class EventsListComponent implements OnInit {
         }
       },
       error: err => {
-  // Error can be shown in the template or handled otherwise
         setTimeout(() => { this.loading = false; }, 1000);
       }
     });
@@ -53,14 +51,13 @@ export class EventsListComponent implements OnInit {
   }
   select(e:EventItem, ev:Event){
     ev.stopPropagation();
-    const token = sessionStorage.getItem('jwt');
-    if(!token){
-      // require login before booking
-      this.router.navigate(['/login'], { queryParams: { returnUrl: `/events/${e.id}` } });
-      return;
-    }
-    // already authenticated: navigate to event detail where booking UI exists
-    this.router.navigate(['/events', e.id]);
+  // Open details page directly (no auth required for viewing details)
+  this.router.navigate(['/events', e.id]);
+  }
+  viewDetails(e:EventItem, ev:Event){
+    ev.stopPropagation();
+  // Open details page directly (no auth required for viewing details)
+  this.router.navigate(['/events', e.id]);
   }
   open(e:EventItem){ this.router.navigate(['/events', e.id]); }
 }

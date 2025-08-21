@@ -21,13 +21,16 @@ export class EventsService {
     return event;
   }
 
-  async create(input: { title:string; location:string; startDateTime: Date; rows:number; cols:number; }) {
+  async create(input: { title:string; location:string; startDateTime: Date; rows:number; cols:number; imageUrl?: string }) {
     const seatMap = this.buildSeatMap(input.rows, input.cols);
-    const e = this.eventsRepo.create({ title: input.title, location: input.location, startDateTime: input.startDateTime, seatMap });
-    return this.eventsRepo.save(e);
+  console.log('EventsService.create input:', input);
+  const e = this.eventsRepo.create({ title: input.title, location: input.location, startDateTime: input.startDateTime, seatMap, imageUrl: input.imageUrl });
+  const saved = await this.eventsRepo.save(e);
+  console.log('EventsService.create saved:', saved);
+  return saved;
   }
 
-  async update(id:number, patch: Partial<{ title:string; location:string; startDateTime: Date; rows:number; cols:number; }>) {
+  async update(id:number, patch: Partial<{ title:string; location:string; startDateTime: Date; rows:number; cols:number; imageUrl?: string }>) {
     const event = await this.findOne(id);
     if (patch.title) event.title = patch.title;
     if (patch.location) event.location = patch.location;
@@ -35,6 +38,7 @@ export class EventsService {
     if (patch.rows && patch.cols) {
       event.seatMap = this.buildSeatMap(patch.rows, patch.cols);
     }
+  if ((patch as any).imageUrl !== undefined) event.imageUrl = (patch as any).imageUrl;
     return this.eventsRepo.save(event);
   }
 
@@ -73,8 +77,8 @@ export class EventsService {
     const count = await this.eventsRepo.count();
     if (count === 0) {
       const sample: Partial<Event>[] = [
-        { title: 'Tech Conference', location: 'Hall A', startDateTime: new Date(Date.now() + 86400000), seatMap: this.buildSeatMap(5, 8) },
-        { title: 'Music Concert', location: 'Auditorium', startDateTime: new Date(Date.now() + 172800000), seatMap: this.buildSeatMap(6, 10) },
+  { title: 'Tech Conference', location: 'Hall A', startDateTime: new Date(Date.now() + 86400000), seatMap: this.buildSeatMap(5, 8), imageUrl: '/assets/Tech1.JPG' },
+  { title: 'Music Concert', location: 'Auditorium', startDateTime: new Date(Date.now() + 172800000), seatMap: this.buildSeatMap(6, 10), imageUrl: '/assets/stage.jpg' },
       ];
       await this.eventsRepo.save(sample);
     }

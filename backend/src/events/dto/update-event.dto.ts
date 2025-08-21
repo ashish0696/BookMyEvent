@@ -28,4 +28,9 @@ export class UpdateEventDto {
   @IsInt()
   @Min(1)
   cols?: number;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  imageUrl?: string;
 }

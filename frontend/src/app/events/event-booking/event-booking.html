@@ -1,0 +1,26 @@
+<div class="event-detail-wrap">
+  <div *ngIf="!event && loading">Loading...</div>
+  <div *ngIf="event as ev" class="event-detail-card">
+   <h2><mat-icon>flare</mat-icon> {{ev.title}}<mat-icon>flare</mat-icon></h2>
+    <div class="event-stage">
+    Event Stage
+    </div>
+
+    <div class="seat-grid">
+    <div *ngFor="let row of ev.seatMap; let r = index" class="seat-row">
+     <span class="row-indicator">{{ rowLabel(r) }} ➤</span>
+      <ng-container *ngFor="let seat of row; let c = index">
+        <button class="seat" [disabled]="seat === 'X'" [class.booked]="seat==='X'" [class.selected]="isSelected(r,c)" (click)="toggleSeat(r,c)">{{c+1}}</button>
+        </ng-container>
+    </div>
+    </div>
+    <span *ngIf="selected.size" class="selected-info"><mat-icon class="mt-icon">book</mat-icon>Selected: {{ selectedList }}</span>
+
+  <div class="actions">
+    <button class="book-btn" (click)="bookSelected()" [disabled]="booking || !selected.size"><mat-icon class="mt-iconBook">turned_in</mat-icon>Book Selected</button>
+    <button class="cancel-btn" (click)="cancelSelection()" [disabled]="!selected.size"><mat-icon class="mt-iconBook">reply</mat-icon>Clear Selection</button>
+    <button class="back-btn" (click)="back()"><mat-icon class="mt-icon">replay</mat-icon>Back</button>
+
+  </div>
+</div>
+</div>

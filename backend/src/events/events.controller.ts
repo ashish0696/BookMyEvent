@@ -18,7 +18,6 @@ export class EventsController {
   }
 
   @Get(':id')
-  @UseGuards(AuthGuard('jwt'))
   detail(@Param('id', ParseIntPipe) id: number) {
     return this.events.findOne(id);
   }
@@ -32,12 +31,14 @@ export class EventsController {
   @Post()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() dto: CreateEventDto) {
+  console.log('EventsController.create received dto:', dto);
     return this.events.create({
       title: dto.title,
       location: dto.location,
       startDateTime: new Date(dto.startDateTime),
       rows: dto.rows,
-      cols: dto.cols,
+  cols: dto.cols,
+  imageUrl: (dto as any).imageUrl,
     });
   }
 

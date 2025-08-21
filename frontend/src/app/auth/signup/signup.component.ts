@@ -45,7 +45,6 @@ export class SignupComponent {
   submit(){
     if (this.form.invalid) return;
     this.loading = true; this.error = '';
-    // strip confirmPassword before sending to backend
     const payload = {
       email: this.form.value.email,
       password: this.form.value.password,
