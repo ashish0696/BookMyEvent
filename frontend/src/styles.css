@@ -13,8 +13,8 @@ html, body {
     float: right;
 } */
 
-
-.mat-mdc-dialog-surface{
+.mat-mdc-dialog-inner-container,
+.mdc-dialog__container {
     border-radius: 12px;
     overflow: hidden;
 }

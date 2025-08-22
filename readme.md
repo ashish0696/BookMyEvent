@@ -95,7 +95,7 @@ ___________________________________________________________________
 ## Design choices & implemented features
 
 - Architecture: Standard Angular frontend + NestJS backend with TypeORM (MySQL).
-  Frontend uses standalone components and Angular 17 features.
+  Frontend uses standalone components and Angular 18 features.
 - Authentication: JWT-based. Backend issues JWT on login and the frontend stores
   it in `sessionStorage` (simple approach for this app). Requests include
   `Authorization: Bearer <token>` via an HTTP interceptor.

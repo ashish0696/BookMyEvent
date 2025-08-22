@@ -64,7 +64,7 @@ export class EventsService {
     }
     if (event.seatMap[r0][c0] === 'X') throw new BadRequestException('Seat already booked');
 
-    console.log(`Booking seat at row ${seatRow}, column ${seatCol} for user ${userId} on event ${eventId}`);
+    // console.log(`Booking seat at row ${seatRow}, column ${seatCol} for user ${userId} on event ${eventId}`);
 
     event.seatMap[r0][c0] = 'X';
     await this.eventsRepo.save(event);
